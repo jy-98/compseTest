@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
@@ -35,10 +36,32 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background,
                 ) {
 //                    Greeting(getString(R.string.happy_birthday_text),getString(R.string.signature_text))
-                    Greeting()
+//                    Greeting()
+                    Nice()
                 }
             }
         }
+    }
+}
+
+@Composable
+fun Nice() {
+    val niceImage = painterResource(id = R.drawable.ic_task_completed)
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+
+        Image(painter = niceImage, contentDescription = null)
+        Text(
+            text = "All tasks completed",
+            modifier = Modifier.padding(top = 24.dp, bottom = 8.dp),
+            fontWeight = Bold
+        )
+        Text(text = "Nice work!", fontSize = 16.sp)
+
+
     }
 }
 
