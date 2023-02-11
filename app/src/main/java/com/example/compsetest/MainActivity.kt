@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -43,6 +44,75 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+@Composable
+fun MiniCard(
+    message: String,
+    baby: String,
+    background: Color,
+    contentAlignment: Alignment = Alignment.TopStart
+
+) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize(),
+        contentAlignment = contentAlignment
+    ) {
+
+        Column(
+            modifier = Modifier
+                .fillMaxWidth(0.5f)
+                .fillMaxHeight(0.5f)
+                .background(background)
+                .padding(16.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            Text(
+                text = message,
+                fontWeight = Bold,
+                modifier = Modifier.padding(bottom = 16.dp)
+            )
+            Text(
+                text = baby,
+                textAlign = TextAlign.Justify
+            )
+
+        }
+
+    }
+
+}
+
+@Composable
+fun Card() {
+    MiniCard(
+        "Text composable",
+        "Displays text and follows Material Design guidelines.",
+        Color.Green,
+        Alignment.TopStart
+    )
+    MiniCard(
+        "Image composable",
+        "Creates a composable that lays out and draws a given Painter class object.",
+        Color.Yellow,
+        Alignment.TopEnd
+    )
+    MiniCard(
+        "Row composable",
+        "A layout composable that places its children in a horizontal sequence.",
+        Color.Cyan,
+        Alignment.BottomStart
+    )
+    MiniCard(
+        "Column composable",
+        "A layout composable that places its children in a vertical sequence.",
+        Color.LightGray,
+        Alignment.BottomEnd
+    )
+
+}
+
 
 @Composable
 fun Nice() {
@@ -141,6 +211,6 @@ fun Greeting() {
 @Composable
 fun DefaultPreview() {
     CompseTestTheme {
-        Greeting()
+        Card()
     }
 }
